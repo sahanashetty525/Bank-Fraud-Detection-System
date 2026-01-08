@@ -27,27 +27,60 @@ body {
   color: var(--text);
 }
 
+/* HEADER */
 header {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f172a, #3b82f6);
   color: #fff;
   text-align: center;
-  padding: 80px 20px 60px;
+  padding: 100px 20px 60px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   box-shadow: 0 6px 15px var(--shadow);
 }
 
+/* Header background symbols */
+header svg.background-icon {
+  position: absolute;
+  opacity: 0.15;
+}
+
+/* Header text */
 header h1 {
-  font-size: 40px;
+  font-size: 42px;
   font-weight: 700;
+  margin-bottom: 12px;
 }
-
 header p {
-  margin-top: 12px;
   font-size: 18px;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 20px;
 }
 
+/* Feature icons in header */
+.header-icons {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.header-icons div {
+  text-align: center;
+}
+.header-icons svg {
+  width: 50px;
+  height: 50px;
+  stroke: #fff;
+}
+.header-icons p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #e0e7ff;
+}
+
+/* NAVIGATION */
 nav {
   display: flex;
   justify-content: center;
@@ -61,7 +94,6 @@ nav {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-
 nav button {
   background: none;
   border: none;
@@ -73,38 +105,33 @@ nav button {
   border-radius: 8px;
   transition: all 0.3s ease;
 }
-
 nav button:hover {
   background: var(--accent);
   color: #fff;
 }
-
 nav button.active {
   background: var(--accent);
   color: #fff;
   box-shadow: 0 4px 12px var(--shadow);
 }
 
+/* MAIN CONTENT */
 .container {
   max-width: 1000px;
   margin: 50px auto;
   padding: 0 20px;
 }
-
 section {
   display: none;
   animation: fadeIn 0.5s ease-in-out;
 }
-
-section.active {
-  display: block;
-}
-
+section.active { display: block; }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* CARDS */
 .card {
   background: var(--card);
   border-radius: 15px;
@@ -113,61 +140,32 @@ section.active {
   box-shadow: 0 10px 25px var(--shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 30px var(--shadow);
 }
 
-h2 {
-  font-size: 28px;
-  color: var(--primary);
-  margin-bottom: 20px;
-}
+/* HEADINGS */
+h2 { font-size: 28px; color: var(--primary); margin-bottom: 20px; }
+h3 { font-size: 20px; color: var(--accent); margin-bottom: 12px; }
 
-h3 {
-  font-size: 20px;
-  color: var(--accent);
-  margin-bottom: 12px;
-}
+/* TEXT */
+p, li { font-size: 16px; line-height: 1.8; }
+ul { padding-left: 20px; }
 
-p, li {
-  font-size: 16px;
-  line-height: 1.8;
-}
+/* TABLE */
+table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 15px; }
+th, td { border: 1px solid var(--border); padding: 12px; text-align: center; }
+th { background: var(--bg); color: var(--primary); font-weight: 600; }
 
-ul {
-  padding-left: 20px;
-}
+/* IMAGES */
+img { border-radius: 12px; box-shadow: 0 8px 25px var(--shadow); margin-bottom: 20px; }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  font-size: 15px;
-}
-
-th, td {
-  border: 1px solid var(--border);
-  padding: 12px;
-  text-align: center;
-}
-
-th {
-  background: var(--bg);
-  color: var(--primary);
-  font-weight: 600;
-}
-
-img {
-  border-radius: 12px;
-  box-shadow: 0 8px 25px var(--shadow);
-  margin-bottom: 20px;
-}
-
+/* RESPONSIVE */
 @media (max-width: 768px) {
   nav { flex-direction: column; gap: 15px; }
   nav button { width: 100%; }
+  .header-icons { gap: 30px; }
 }
 </style>
 </head>
@@ -175,8 +173,20 @@ img {
 <body>
 
 <header>
+  <!-- Background symbols -->
+  <svg class="background-icon" style="top:-20px; left:-20px; width:80px; height:80px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+  <svg class="background-icon" style="top:20px; right:-30px; width:60px; height:60px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M1 12h22"/></svg>
+  <svg class="background-icon" style="bottom:-30px; left:10%; width:70px; height:70px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l4 4-4 4-4-4 4-4z"/></svg>
+
   <h1>Bank Fraud Detection System</h1>
   <p>Design & Analysis of Algorithms – Mini Project</p>
+
+  <div class="header-icons">
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 1v22M1 12h22"/></svg><p>Transactions</p></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 1l9 4v6c0 6-9 11-9 11s-9-5-9-11V5l9-4z"/></svg><p>Security</p></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="3 17 9 11 13 15 21 7"/></svg><p>Analysis</p></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 9v4m0 4h.01M10 2h4l2 4H8l2-4z"/></svg><p>Alerts</p></div>
+  </div>
 </header>
 
 <nav>
@@ -230,7 +240,6 @@ img {
       <li><b>Data Sorting:</b> Merge Sort detects abnormal transaction spikes.</li>
       <li><b>Risk Flagging:</b> Suspicious activities are marked for verification.</li>
     </ul>
-
   </div>
 </section>
 
@@ -305,7 +314,6 @@ img {
       <h3>SDG 9: Industry, Innovation, and Infrastructure</h3>
       <p>The project enhances financial infrastructure through innovative algorithmic solutions. Dijkstra’s algorithm enables graph-based tracking of complex money laundering routes, improving system resilience, performance, and security against high-volume fraud and cyber-attacks.</p>
     </div>
-
   </div>
 </section>
 
@@ -315,7 +323,6 @@ img {
 function switchTab(id, btn) {
   document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
   document.getElementById(id).classList.add("active");
-
   document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
   btn.classList.add("active");
 }
