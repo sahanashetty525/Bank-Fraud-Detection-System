@@ -144,7 +144,7 @@ th {
 <!-- OVERVIEW -->
 <section id="overview" class="active">
   <div class="card">
-   
+
     <p>
       Online banking transactions are increasing rapidly, which also increases the risk of fraud.
       Manual fraud detection becomes difficult due to the large volume of transaction data.
@@ -165,8 +165,10 @@ th {
     </ul>
 
     <h3>Dataset Used</h3>
-    <p>We use the PaySim synthetic financial dataset which simulates realistic banking transactions.
-It contains transaction type, step, sender, receiver, amount, and fraud label.</p>
+    <p>
+      We use the PaySim synthetic financial dataset which simulates realistic banking transactions.
+      It contains transaction type, step, sender, receiver, amount, and fraud label.
+    </p>
 
     <h3>Stakeholders</h3>
     <ul>
@@ -175,30 +177,31 @@ It contains transaction type, step, sender, receiver, amount, and fraud label.</
       <li>Fraud Detection Teams</li>
       <li>Regulatory Authorities</li>
     </ul>
+
+    <h3>Proposed Solution</h3>
+    <p>
+      The proposed system uses efficient Design and Analysis of Algorithms (DAA) techniques
+      to automatically identify suspicious bank transactions in a structured and reliable manner.
+    </p>
+
+    <div style="text-align:center; margin: 25px 0;">
+      <img src="flowchart.png"
+           alt="Bank Fraud Detection Flowchart"
+           style="max-width:100%; height:auto; border-radius:10px;
+                  box-shadow:0 6px 15px rgba(0,0,0,0.15);">
+    </div>
+
+    <ul>
+      <li><b>Data Collection:</b> Transaction details are retrieved from the bank database.</li>
+      <li><b>Pattern Detection:</b> Rabin–Karp algorithm identifies suspicious sequences.</li>
+      <li><b>Network Mapping:</b> Accounts as nodes, transactions as edges.</li>
+      <li><b>Path Tracing:</b> Dijkstra’s algorithm tracks unusual routes.</li>
+      <li><b>Data Sorting:</b> Merge Sort detects abnormal transaction spikes.</li>
+      <li><b>Risk Flagging:</b> Suspicious activities are marked for verification.</li>
+    </ul>
+
   </div>
 </section>
-  <h3>Proposed Solution</h3>
-
-<p>
-The proposed system uses efficient Design and Analysis of Algorithms (DAA) techniques
-to automatically identify suspicious bank transactions in a structured and reliable manner.
-</p>
-
-<!-- Flowchart Image -->
-<div style="text-align:center; margin: 25px 0;">
-  <img src="Screenshot 2026-01-07 225215.png"
-       alt="Bank Fraud Detection Flowchart"
-       style="max-width:100%; height:auto; border-radius:10px; box-shadow:0 6px 15px rgba(0,0,0,0.15);">
-</div>
-
-<ul>
-  <li><b>Data Collection:</b> Transaction details are retrieved from the bank database.</li>
-  <li><b>Pattern Detection:</b> Rabin–Karp algorithm identifies repeated or suspicious transaction sequences.</li>
-  <li><b>Network Mapping:</b> Bank accounts are modelled as nodes and transactions as connections.</li>
-  <li><b>Path Tracing:</b> Dijkstra’s algorithm tracks unusual money transfer routes.</li>
-  <li><b>Data Sorting:</b> Merge Sort organises transactions to detect abnormal volume spikes.</li>
-  <li><b>Risk Flagging:</b> Suspicious activities are marked for manual verification.</li>
-</ul>
 
 <!-- ANALYSIS -->
 <section id="analysis">
@@ -208,49 +211,44 @@ to automatically identify suspicious bank transactions in a structured and relia
     <table>
       <tr>
         <th>Algorithm</th>
-        <th>Used</th>
         <th>Purpose</th>
         <th>Time</th>
         <th>Space</th>
       </tr>
       <tr>
         <td>Merge Sort</td>
-        <td>Yes</td>
         <td>Sort transactions</td>
         <td>O(n log n)</td>
         <td>O(n)</td>
       </tr>
       <tr>
         <td>Rabin–Karp</td>
-        <td>Yes</td>
-        <td>Detect patterns</td>
+        <td>Pattern detection</td>
         <td>O(n + m)</td>
         <td>O(1)</td>
       </tr>
       <tr>
         <td>Dijkstra</td>
-        <td>Yes</td>
-        <td>Trace money paths</td>
+        <td>Money path tracing</td>
         <td>O(E log V)</td>
         <td>O(V + E)</td>
       </tr>
     </table>
 
-    <h3>Reason for Selection</h3>
     <p>
-      These algorithms are efficient, scalable, and suitable for handling large financial datasets.
+      These algorithms are efficient, scalable, and suitable for large banking datasets.
     </p>
   </div>
 </section>
 
-<!-- REFLECTIONS -->
+<!-- REFLECTION -->
 <section id="reflection">
   <div class="card">
     <h2>Reflections</h2>
     <p>
-      This project helped us understand how algorithms can be applied to real-world banking problems.
-      We learned to analyze algorithm efficiency, handle large datasets, and design a practical fraud
-      detection system. The project improved our teamwork, problem-solving, and implementation skills.
+      This project helped us understand real-world applications of algorithms in banking systems.
+      We improved our skills in algorithm analysis, teamwork, and problem-solving while designing
+      a practical fraud detection system.
     </p>
   </div>
 </section>
@@ -261,8 +259,8 @@ to automatically identify suspicious bank transactions in a structured and relia
     <h2>SDGs Addressed</h2>
     <p><b>SDG 9:</b> Industry, Innovation and Infrastructure</p>
     <p>
-      This project contributes to building secure and reliable digital financial systems
-      using efficient algorithm-based fraud detection.
+      This project supports secure digital financial infrastructure using efficient
+      algorithm-based fraud detection methods.
     </p>
   </div>
 </section>
@@ -273,6 +271,7 @@ to automatically identify suspicious bank transactions in a structured and relia
 function switchTab(id, btn) {
   document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
   document.getElementById(id).classList.add("active");
+
   document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
   btn.classList.add("active");
 }
