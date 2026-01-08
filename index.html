@@ -9,46 +9,43 @@
 
 <style>
 :root {
-  --primary: #1e40af;        /* Deep Blue */
-  --secondary: #2563eb;      /* Accent Blue */
-  --bg: #f4f6f8;             /* Light gray background */
-  --card: #ffffff;            /* Card background */
-  --text: #111827;            /* Dark text */
-  --muted: #6b7280;           /* Secondary text */
-  --border: #e5e7eb;
-  --shadow: rgba(0,0,0,0.08);
+  --primary: #0f172a;      /* Dark navy */
+  --accent: #3b82f6;       /* Blue accent */
+  --bg: #f1f5f9;           /* Light background */
+  --card: #ffffff;          /* Card color */
+  --text: #1e293b;          /* Dark text */
+  --muted: #64748b;         /* Muted text */
+  --border: #cbd5e1;        /* Border color */
+  --shadow: rgba(0,0,0,0.1);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; margin:0; padding:0; }
 
 body {
-  margin: 0;
   font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
 }
 
 header {
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  background: linear-gradient(135deg, var(--primary), var(--accent));
   color: #fff;
   text-align: center;
-  padding: 60px 20px 40px;
-  border-bottom: 1px solid var(--border);
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  padding: 80px 20px 60px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 6px 15px var(--shadow);
 }
 
 header h1 {
-  margin: 0;
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 700;
 }
 
 header p {
-  margin-top: 10px;
-  font-size: 16px;
-  color: #e0e7ff;
+  margin-top: 12px;
+  font-size: 18px;
+  color: rgba(255,255,255,0.8);
 }
 
 nav {
@@ -56,42 +53,36 @@ nav {
   justify-content: center;
   gap: 30px;
   background: #fff;
-  padding: 15px;
-  box-shadow: 0 2px 8px var(--shadow);
   position: sticky;
   top: 0;
   z-index: 100;
+  padding: 15px 0;
+  box-shadow: 0 3px 15px var(--shadow);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 nav button {
   background: none;
   border: none;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   color: var(--muted);
-  padding: 10px 0;
-  position: relative;
-  transition: color 0.3s;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
 nav button:hover {
-  color: var(--secondary);
+  background: var(--accent);
+  color: #fff;
 }
 
 nav button.active {
-  color: var(--primary);
-}
-
-nav button.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--primary);
-  border-radius: 2px 2px 0 0;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 12px var(--shadow);
 }
 
 .container {
@@ -110,37 +101,39 @@ section.active {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .card {
   background: var(--card);
-  border-radius: 12px;
-  padding: 35px 30px;
-  margin-bottom: 35px;
-  box-shadow: 0 6px 20px var(--shadow);
-  transition: transform 0.3s;
+  border-radius: 15px;
+  padding: 35px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 25px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px var(--shadow);
 }
 
 h2 {
-  margin-top: 0;
-  font-size: 26px;
+  font-size: 28px;
   color: var(--primary);
+  margin-bottom: 20px;
 }
 
 h3 {
-  margin-bottom: 8px;
-  color: var(--secondary);
+  font-size: 20px;
+  color: var(--accent);
+  margin-bottom: 12px;
 }
 
 p, li {
-  line-height: 1.7;
   font-size: 16px;
+  line-height: 1.8;
 }
 
 ul {
@@ -161,23 +154,20 @@ th, td {
 }
 
 th {
-  background: #f1f5f9;
+  background: var(--bg);
   color: var(--primary);
+  font-weight: 600;
 }
 
 img {
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 8px 25px var(--shadow);
   margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-  }
-  nav button {
-    padding: 12px 0;
-  }
+  nav { flex-direction: column; gap: 15px; }
+  nav button { width: 100%; }
 }
 </style>
 </head>
@@ -201,17 +191,10 @@ img {
 <!-- OVERVIEW -->
 <section id="overview" class="active">
   <div class="card">
-
-    <p>
-      Online banking transactions are increasing rapidly, which also increases the risk of fraud.
-      Manual fraud detection becomes difficult due to the large volume of transaction data.
-    </p>
+    <p>Online banking transactions are increasing rapidly, which also increases the risk of fraud. Manual fraud detection becomes difficult due to the large volume of transaction data.</p>
 
     <h3>Problem Statement</h3>
-    <p>
-      To detect suspicious bank transactions by analyzing transaction patterns,
-      money transfer paths, and abnormal transaction spikes.
-    </p>
+    <p>To detect suspicious bank transactions by analyzing transaction patterns, money transfer paths, and abnormal transaction spikes.</p>
 
     <h3>Objectives</h3>
     <ul>
@@ -222,10 +205,7 @@ img {
     </ul>
 
     <h3>Dataset Used</h3>
-    <p>
-      We use the PaySim synthetic financial dataset which simulates realistic banking transactions.
-      It contains transaction type, step, sender, receiver, amount, and fraud label.
-    </p>
+    <p>We use the PaySim synthetic financial dataset which simulates realistic banking transactions. It contains transaction type, step, sender, receiver, amount, and fraud label.</p>
 
     <h3>Stakeholders</h3>
     <ul>
@@ -236,15 +216,10 @@ img {
     </ul>
 
     <h3>Proposed Solution</h3>
-    <p>
-      The proposed system uses efficient Design and Analysis of Algorithms (DAA) techniques
-      to automatically identify suspicious bank transactions in a structured and reliable manner.
-    </p>
+    <p>The proposed system uses efficient Design and Analysis of Algorithms (DAA) techniques to automatically identify suspicious bank transactions in a structured and reliable manner.</p>
 
     <div style="text-align:center; margin: 30px 0;">
-      <img src="Screenshot 2026-01-07 225215.png"
-           alt="Bank Fraud Detection Flowchart"
-           style="max-width:100%; height:auto;">
+      <img src="Screenshot 2026-01-07 225215.png" alt="Bank Fraud Detection Flowchart" style="max-width:100%; height:auto;">
     </div>
 
     <ul>
@@ -263,7 +238,6 @@ img {
 <section id="analysis">
   <div class="card">
     <h2>Algorithm Analysis</h2>
-
     <table>
       <tr>
         <th>Algorithm</th>
@@ -290,11 +264,7 @@ img {
         <td>O(n)</td>
       </tr>
     </table>
-
-    <p style="margin-top:20px;">
-      These algorithms were selected for their efficiency, scalability, and suitability
-      for handling large financial datasets.
-    </p>
+    <p style="margin-top:20px;">These algorithms were selected for their efficiency, scalability, and suitability for handling large financial datasets.</p>
   </div>
 </section>
 
@@ -318,40 +288,22 @@ img {
   <div class="card">
     <h2>SDGs Addressed</h2>
 
-    <!-- SDG 16 -->
     <div style="margin-bottom:40px; text-align:center;">
       <img src="sdg16.jpeg" alt="SDG 16" style="max-width:300px;">
       <h3>SDG 16: Peace, Justice, and Strong Institutions</h3>
-      <p>
-        This project supports the reduction of illicit financial flows by identifying
-        and intercepting fraudulent transaction networks. Using the Rabin–Karp algorithm,
-        suspicious transaction patterns are detected early, ensuring institutional
-        transparency, accountability, and traceability through digital audit trails.
-      </p>
+      <p>This project supports the reduction of illicit financial flows by identifying and intercepting fraudulent transaction networks. Using the Rabin–Karp algorithm, suspicious transaction patterns are detected early, ensuring institutional transparency, accountability, and traceability through digital audit trails.</p>
     </div>
 
-    <!-- SDG 8 -->
     <div style="margin-bottom:40px; text-align:center;">
       <img src="sdg8.jpeg" alt="SDG 8" style="max-width:300px;">
       <h3>SDG 8: Decent Work and Economic Growth</h3>
-      <p>
-        By preventing financial fraud, the system protects economic stability and ensures
-        that legitimate financial resources remain within the economy. Merge Sort enables
-        efficient handling of large transaction datasets with O(n log n) complexity,
-        ensuring scalable, reliable banking services and increased consumer trust.
-      </p>
+      <p>By preventing financial fraud, the system protects economic stability and ensures that legitimate financial resources remain within the economy. Merge Sort enables efficient handling of large transaction datasets with O(n log n) complexity, ensuring scalable, reliable banking services and increased consumer trust.</p>
     </div>
 
-    <!-- SDG 9 -->
     <div style="margin-bottom:40px; text-align:center;">
       <img src="sdg9.jpeg" alt="SDG 9" style="max-width:300px;">
       <h3>SDG 9: Industry, Innovation, and Infrastructure</h3>
-      <p>
-        The project enhances financial infrastructure through innovative algorithmic
-        solutions. Dijkstra’s algorithm enables graph-based tracking of complex money
-        laundering routes, improving system resilience, performance, and security
-        against high-volume fraud and cyber-attacks.
-      </p>
+      <p>The project enhances financial infrastructure through innovative algorithmic solutions. Dijkstra’s algorithm enables graph-based tracking of complex money laundering routes, improving system resilience, performance, and security against high-volume fraud and cyber-attacks.</p>
     </div>
 
   </div>
