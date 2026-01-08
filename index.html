@@ -5,74 +5,69 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bank Fraud Detection System</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --primary: #1b3c59;
-  --secondary: #2d6a9f;
-  --accent: #e3f2fd;
-  --bg: #f4f7fb;
+  --primary: #2563eb;
+  --bg: #f9fafb;
   --card: #ffffff;
-  --text: #333;
-  --alert: #d32f2f;
-  --success: #388e3c;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
 }
 
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
 }
 
 header {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: white;
+  background: white;
+  border-bottom: 1px solid var(--border);
   text-align: center;
-  padding: 60px 20px;
+  padding: 40px 20px;
 }
 
 header h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 40px;
   margin: 0;
+  font-size: 32px;
+  color: var(--primary);
 }
 
-header h3 {
-  font-weight: 400;
-  color: var(--accent);
+header p {
+  margin-top: 8px;
+  color: var(--muted);
 }
 
 nav {
   background: white;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 25px;
   padding: 15px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
+  border-bottom: 1px solid var(--border);
 }
 
 nav button {
-  border: none;
   background: none;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
-  padding: 10px 15px;
-  color: #555;
-  border-bottom: 3px solid transparent;
+  color: var(--muted);
+  padding-bottom: 6px;
 }
 
 nav button.active {
-  border-bottom: 3px solid var(--secondary);
-  color: var(--secondary);
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 900px;
   margin: 40px auto;
   padding: 0 20px;
 }
@@ -87,56 +82,45 @@ section.active {
 
 .card {
   background: var(--card);
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-  margin-bottom: 30px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 30px;
+  margin-bottom: 25px;
 }
 
 h2 {
+  margin-top: 0;
+  font-size: 22px;
   color: var(--primary);
-  border-left: 5px solid var(--secondary);
-  padding-left: 15px;
+}
+
+h3 {
+  margin-bottom: 6px;
+}
+
+p, li {
+  line-height: 1.6;
+}
+
+ul {
+  padding-left: 20px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 14px;
 }
 
 th, td {
-  border: 1px solid #ddd;
-  padding: 12px;
+  border: 1px solid var(--border);
+  padding: 10px;
+  text-align: center;
 }
 
 th {
-  background: var(--primary);
-  color: white;
-}
-
-textarea {
-  width: 100%;
-  padding: 15px;
-  border-radius: 8px;
-}
-
-pre {
-  background: #263238;
-  color: #eceff1;
-  padding: 20px;
-  border-radius: 8px;
-  min-height: 180px;
-}
-
-button.run-btn {
-  background: var(--success);
-  color: white;
-  border: none;
-  padding: 12px;
-  font-weight: bold;
-  width: 100%;
-  margin-top: 15px;
-  cursor: pointer;
+  background: #f1f5f9;
 }
 </style>
 </head>
@@ -144,100 +128,119 @@ button.run-btn {
 <body>
 
 <header>
-  <h1>🏦 Bank Fraud Detection System</h1>
-  <h3>Design & Analysis of Algorithms – Mini Project</h3>
+  <h1>Bank Fraud Detection System</h1>
+  <p>Design & Analysis of Algorithms – Mini Project</p>
 </header>
 
 <nav>
   <button class="active" onclick="switchTab('overview', this)">Overview</button>
   <button onclick="switchTab('analysis', this)">Algorithm Analysis</button>
-  <button onclick="switchTab('reflection', this)">Reflection</button>
+  <button onclick="switchTab('reflection', this)">Reflections</button>
   <button onclick="switchTab('sdg', this)">SDGs</button>
-  <button onclick="switchTab('demo', this)">Demo</button>
 </nav>
 
 <div class="container">
 
+<!-- OVERVIEW -->
 <section id="overview" class="active">
   <div class="card">
-    <h2>Project Overview</h2>
+    <h2>Overview</h2>
     <p>
-      Online banking systems process millions of transactions daily. Detecting fraudulent activities manually is slow
-      and unreliable. This project proposes an algorithm-based approach to automatically identify suspicious patterns
-      in bank transactions.
+      Online banking transactions are increasing rapidly, which also increases the risk of fraud.
+      Manual fraud detection becomes difficult due to the large volume of transaction data.
     </p>
 
-    <h3>Solution Approach</h3>
+    <h3>Problem Statement</h3>
+    <p>
+      To detect suspicious bank transactions by analyzing transaction patterns,
+      money transfer paths, and abnormal transaction spikes.
+    </p>
+
+    <h3>Objectives</h3>
     <ul>
-      <li>Detect repeated transaction patterns using <b>Rabin–Karp</b></li>
-      <li>Trace suspicious money paths using <b>Dijkstra’s Algorithm</b></li>
-      <li>Sort transactions using <b>Merge Sort</b> to find abnormal spikes</li>
+      <li>Detect repeated suspicious transactions</li>
+      <li>Trace unusual money transfer routes</li>
+      <li>Identify abnormal transaction amounts</li>
+      <li>Apply efficient DAA algorithms</li>
+    </ul>
+
+    <h3>Dataset Used</h3>
+    <p>PaySim – Synthetic Financial Transaction Dataset</p>
+
+    <h3>Stakeholders</h3>
+    <ul>
+      <li>Banks</li>
+      <li>Customers</li>
+      <li>Fraud Detection Teams</li>
+      <li>Regulatory Authorities</li>
     </ul>
   </div>
 </section>
 
+<!-- ANALYSIS -->
 <section id="analysis">
   <div class="card">
     <h2>Algorithm Analysis</h2>
 
     <table>
       <tr>
-        <th>Task</th>
         <th>Algorithm</th>
-        <th>Time Complexity</th>
+        <th>Used</th>
+        <th>Purpose</th>
+        <th>Time</th>
+        <th>Space</th>
       </tr>
       <tr>
-        <td>Pattern Detection</td>
-        <td>Rabin–Karp</td>
+        <td>Merge Sort</td>
+        <td>Yes</td>
+        <td>Sort transactions</td>
+        <td>O(n log n)</td>
         <td>O(n)</td>
       </tr>
       <tr>
-        <td>Transaction Sorting</td>
-        <td>Merge Sort</td>
-        <td>O(n log n)</td>
+        <td>Rabin–Karp</td>
+        <td>Yes</td>
+        <td>Detect patterns</td>
+        <td>O(n + m)</td>
+        <td>O(1)</td>
       </tr>
       <tr>
-        <td>Money Flow Tracking</td>
         <td>Dijkstra</td>
+        <td>Yes</td>
+        <td>Trace money paths</td>
         <td>O(E log V)</td>
+        <td>O(V + E)</td>
       </tr>
     </table>
-  </div>
-</section>
 
-<section id="reflection">
-  <div class="card">
-    <h2>Individual Reflection</h2>
+    <h3>Reason for Selection</h3>
     <p>
-      This project helped me understand how algorithm selection directly affects performance. Instead of brute-force
-      checking, efficient algorithms reduced execution time and improved scalability.
+      These algorithms are efficient, scalable, and suitable for handling large financial datasets.
     </p>
   </div>
 </section>
 
+<!-- REFLECTIONS -->
+<section id="reflection">
+  <div class="card">
+    <h2>Reflections</h2>
+    <p>
+      This project helped us understand how algorithms can be applied to real-world banking problems.
+      We learned to analyze algorithm efficiency, handle large datasets, and design a practical fraud
+      detection system. The project improved our teamwork, problem-solving, and implementation skills.
+    </p>
+  </div>
+</section>
+
+<!-- SDG -->
 <section id="sdg">
   <div class="card">
     <h2>SDGs Addressed</h2>
     <p><b>SDG 9:</b> Industry, Innovation and Infrastructure</p>
     <p>
-      The project improves financial system reliability by using algorithmic fraud detection, supporting safer
-      digital infrastructure.
+      This project contributes to building secure and reliable digital financial systems
+      using efficient algorithm-based fraud detection.
     </p>
-  </div>
-</section>
-
-<section id="demo">
-  <div class="card">
-    <h2>Fraud Detection Demo</h2>
-
-<textarea id="demoInput">
-TX1001 TX1002 TX1001 TX1003 TX1001
-</textarea>
-
-<button class="run-btn" onclick="runDemo()">Detect Fraud</button>
-
-<pre id="demoOutput">Output will appear here...</pre>
-
   </div>
 </section>
 
@@ -247,27 +250,8 @@ TX1001 TX1002 TX1001 TX1003 TX1001
 function switchTab(id, btn) {
   document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
   document.getElementById(id).classList.add("active");
-
   document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
   btn.classList.add("active");
-}
-
-function runDemo() {
-  const input = document.getElementById("demoInput").value.split(/\s+/);
-  const output = document.getElementById("demoOutput");
-
-  let seen = {};
-  let fraud = [];
-
-  input.forEach(tx => {
-    seen[tx] = (seen[tx] || 0) + 1;
-    if (seen[tx] === 3) fraud.push(tx);
-  });
-
-  output.textContent =
-    fraud.length > 0
-    ? "Suspicious repeated transactions detected:\n" + fraud.join(", ")
-    : "No suspicious patterns found.";
 }
 </script>
 
