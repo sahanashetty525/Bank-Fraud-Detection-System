@@ -5,16 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bank Fraud Detection System</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --primary: #2563eb;
-  --bg: #f9fafb;
-  --card: #ffffff;
-  --text: #1f2937;
-  --muted: #6b7280;
+  --primary: #1e40af;        /* Deep Blue */
+  --secondary: #2563eb;      /* Accent Blue */
+  --bg: #f4f6f8;             /* Light gray background */
+  --card: #ffffff;            /* Card background */
+  --text: #111827;            /* Dark text */
+  --muted: #6b7280;           /* Secondary text */
   --border: #e5e7eb;
+  --shadow: rgba(0,0,0,0.08);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -25,81 +31,116 @@ body {
 }
 
 header {
-  background: white;
-  border-bottom: 1px solid var(--border);
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: #fff;
   text-align: center;
-  padding: 40px 20px;
+  padding: 60px 20px 40px;
+  border-bottom: 1px solid var(--border);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
 
 header h1 {
   margin: 0;
-  font-size: 32px;
-  color: var(--primary);
+  font-size: 36px;
+  font-weight: 700;
 }
 
 header p {
-  margin-top: 8px;
-  color: var(--muted);
+  margin-top: 10px;
+  font-size: 16px;
+  color: #e0e7ff;
 }
 
 nav {
-  background: white;
   display: flex;
   justify-content: center;
-  gap: 25px;
+  gap: 30px;
+  background: #fff;
   padding: 15px;
-  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 8px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 nav button {
   background: none;
   border: none;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   color: var(--muted);
-  padding-bottom: 6px;
+  padding: 10px 0;
+  position: relative;
+  transition: color 0.3s;
+}
+
+nav button:hover {
+  color: var(--secondary);
 }
 
 nav button.active {
   color: var(--primary);
-  border-bottom: 2px solid var(--primary);
+}
+
+nav button.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 2px 2px 0 0;
 }
 
 .container {
-  max-width: 900px;
-  margin: 40px auto;
+  max-width: 1000px;
+  margin: 50px auto;
   padding: 0 20px;
 }
 
 section {
   display: none;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 section.active {
   display: block;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .card {
   background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 30px;
-  margin-bottom: 25px;
+  border-radius: 12px;
+  padding: 35px 30px;
+  margin-bottom: 35px;
+  box-shadow: 0 6px 20px var(--shadow);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 h2 {
   margin-top: 0;
-  font-size: 22px;
+  font-size: 26px;
   color: var(--primary);
 }
 
 h3 {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  color: var(--secondary);
 }
 
 p, li {
-  line-height: 1.6;
+  line-height: 1.7;
+  font-size: 16px;
 }
 
 ul {
@@ -109,18 +150,34 @@ ul {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 15px;
-  font-size: 14px;
+  margin-top: 20px;
+  font-size: 15px;
 }
 
 th, td {
   border: 1px solid var(--border);
-  padding: 10px;
+  padding: 12px;
   text-align: center;
 }
 
 th {
   background: #f1f5f9;
+  color: var(--primary);
+}
+
+img {
+  border-radius: 10px;
+  box-shadow: 0 8px 25px var(--shadow);
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+  nav button {
+    padding: 12px 0;
+  }
 }
 </style>
 </head>
@@ -184,11 +241,10 @@ th {
       to automatically identify suspicious bank transactions in a structured and reliable manner.
     </p>
 
-    <div style="text-align:center; margin: 25px 0;">
+    <div style="text-align:center; margin: 30px 0;">
       <img src="Screenshot 2026-01-07 225215.png"
            alt="Bank Fraud Detection Flowchart"
-           style="max-width:100%; height:auto; border-radius:10px;
-                  box-shadow:0 6px 15px rgba(0,0,0,0.15);">
+           style="max-width:100%; height:auto;">
     </div>
 
     <ul>
@@ -201,8 +257,6 @@ th {
     </ul>
 
   </div>
-</section>
-
 </section>
 
 <!-- ANALYSIS -->
@@ -237,7 +291,7 @@ th {
       </tr>
     </table>
 
-    <p style="margin-top:15px;">
+    <p style="margin-top:20px;">
       These algorithms were selected for their efficiency, scalability, and suitability
       for handling large financial datasets.
     </p>
@@ -248,27 +302,25 @@ th {
 <section id="reflection">
   <div class="card">
     <h2>Reflections</h2>
-   <ul>
-  <li><b>Complete Protection:</b> We combined multiple efficient algorithms to detect, track, and prevent financial fraud in a unified system.</li>
-  <li><b>Instant Action:</b> Fast algorithmic processing enables immediate detection of suspicious activities before major losses occur.</li>
-  <li><b>Tracking the Money:</b> Logical graph-based techniques helped us trace hidden transaction paths and identify illegal fund movement.</li>
-  <li><b>Organized Records:</b> We learned that well-structured data and sorting techniques are essential for transparency and fairness in banking systems.</li>
-  <li><b>Helping the World:</b> Strengthening banking security contributes to economic stability and national financial growth.</li>
-  <li><b>Logic for Good:</b> This project showed us how mathematical and algorithmic thinking can be used to protect people’s hard-earned money.</li>
-</ul>
-
+    <ul>
+      <li><b>Complete Protection:</b> We combined multiple efficient algorithms to detect, track, and prevent financial fraud in a unified system.</li>
+      <li><b>Instant Action:</b> Fast algorithmic processing enables immediate detection of suspicious activities before major losses occur.</li>
+      <li><b>Tracking the Money:</b> Logical graph-based techniques helped us trace hidden transaction paths and identify illegal fund movement.</li>
+      <li><b>Organized Records:</b> We learned that well-structured data and sorting techniques are essential for transparency and fairness in banking systems.</li>
+      <li><b>Helping the World:</b> Strengthening banking security contributes to economic stability and national financial growth.</li>
+      <li><b>Logic for Good:</b> This project showed us how mathematical and algorithmic thinking can be used to protect people’s hard-earned money.</li>
+    </ul>
   </div>
 </section>
 
+<!-- SDG -->
 <section id="sdg">
   <div class="card">
     <h2>SDGs Addressed</h2>
 
     <!-- SDG 16 -->
-    <div style="margin-bottom:40px;">
-      <img src="sdg16.jpeg" alt="SDG 16"
-           style="width:100%; max-width:400px; display:block; margin:0 auto 20px;">
-      
+    <div style="margin-bottom:40px; text-align:center;">
+      <img src="sdg16.jpeg" alt="SDG 16" style="max-width:300px;">
       <h3>SDG 16: Peace, Justice, and Strong Institutions</h3>
       <p>
         This project supports the reduction of illicit financial flows by identifying
@@ -279,10 +331,8 @@ th {
     </div>
 
     <!-- SDG 8 -->
-    <div style="margin-bottom:40px;">
-      <img src="sdg8.jpeg" alt="SDG 8"
-           style="width:100%; max-width:400px; display:block; margin:0 auto 20px;">
-      
+    <div style="margin-bottom:40px; text-align:center;">
+      <img src="sdg8.jpeg" alt="SDG 8" style="max-width:300px;">
       <h3>SDG 8: Decent Work and Economic Growth</h3>
       <p>
         By preventing financial fraud, the system protects economic stability and ensures
@@ -293,10 +343,8 @@ th {
     </div>
 
     <!-- SDG 9 -->
-    <div>
-      <img src="sdg9.jpeg" alt="SDG 9"
-           style="width:100%; max-width:400px; display:block; margin:0 auto 20px;">
-      
+    <div style="margin-bottom:40px; text-align:center;">
+      <img src="sdg9.jpeg" alt="SDG 9" style="max-width:300px;">
       <h3>SDG 9: Industry, Innovation, and Infrastructure</h3>
       <p>
         The project enhances financial infrastructure through innovative algorithmic
@@ -308,7 +356,6 @@ th {
 
   </div>
 </section>
-
 
 </div>
 
