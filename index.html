@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bank Fraud Detection System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #1b3c59;
+  --secondary: #2d6a9f;
+  --accent: #e3f2fd;
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --text: #333;
+  --alert: #d32f2f;
+  --success: #388e3c;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+  margin: 0;
+}
+
+header h3 {
+  font-weight: 400;
+  color: var(--accent);
+}
+
+nav {
+  background: white;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+}
+
+nav button {
+  border: none;
+  background: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 15px;
+  color: #555;
+  border-bottom: 3px solid transparent;
+}
+
+nav button.active {
+  border-bottom: 3px solid var(--secondary);
+  color: var(--secondary);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+section {
+  display: none;
+}
+
+section.active {
+  display: block;
+}
+
+.card {
+  background: var(--card);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: var(--primary);
+  border-left: 5px solid var(--secondary);
+  padding-left: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+}
+
+th {
+  background: var(--primary);
+  color: white;
+}
+
+textarea {
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+pre {
+  background: #263238;
+  color: #eceff1;
+  padding: 20px;
+  border-radius: 8px;
+  min-height: 180px;
+}
+
+button.run-btn {
+  background: var(--success);
+  color: white;
+  border: none;
+  padding: 12px;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 15px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🏦 Bank Fraud Detection System</h1>
+  <h3>Design & Analysis of Algorithms – Mini Project</h3>
+</header>
+
+<nav>
+  <button class="active" onclick="switchTab('overview', this)">Overview</button>
+  <button onclick="switchTab('analysis', this)">Algorithm Analysis</button>
+  <button onclick="switchTab('reflection', this)">Reflection</button>
+  <button onclick="switchTab('sdg', this)">SDGs</button>
+  <button onclick="switchTab('demo', this)">Demo</button>
+</nav>
+
+<div class="container">
+
+<section id="overview" class="active">
+  <div class="card">
+    <h2>Project Overview</h2>
+    <p>
+      Online banking systems process millions of transactions daily. Detecting fraudulent activities manually is slow
+      and unreliable. This project proposes an algorithm-based approach to automatically identify suspicious patterns
+      in bank transactions.
+    </p>
+
+    <h3>Solution Approach</h3>
+    <ul>
+      <li>Detect repeated transaction patterns using <b>Rabin–Karp</b></li>
+      <li>Trace suspicious money paths using <b>Dijkstra’s Algorithm</b></li>
+      <li>Sort transactions using <b>Merge Sort</b> to find abnormal spikes</li>
+    </ul>
+  </div>
+</section>
+
+<section id="analysis">
+  <div class="card">
+    <h2>Algorithm Analysis</h2>
+
+    <table>
+      <tr>
+        <th>Task</th>
+        <th>Algorithm</th>
+        <th>Time Complexity</th>
+      </tr>
+      <tr>
+        <td>Pattern Detection</td>
+        <td>Rabin–Karp</td>
+        <td>O(n)</td>
+      </tr>
+      <tr>
+        <td>Transaction Sorting</td>
+        <td>Merge Sort</td>
+        <td>O(n log n)</td>
+      </tr>
+      <tr>
+        <td>Money Flow Tracking</td>
+        <td>Dijkstra</td>
+        <td>O(E log V)</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<section id="reflection">
+  <div class="card">
+    <h2>Individual Reflection</h2>
+    <p>
+      This project helped me understand how algorithm selection directly affects performance. Instead of brute-force
+      checking, efficient algorithms reduced execution time and improved scalability.
+    </p>
+  </div>
+</section>
+
+<section id="sdg">
+  <div class="card">
+    <h2>SDGs Addressed</h2>
+    <p><b>SDG 9:</b> Industry, Innovation and Infrastructure</p>
+    <p>
+      The project improves financial system reliability by using algorithmic fraud detection, supporting safer
+      digital infrastructure.
+    </p>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="card">
+    <h2>Fraud Detection Demo</h2>
+
+<textarea id="demoInput">
+TX1001 TX1002 TX1001 TX1003 TX1001
+</textarea>
+
+<button class="run-btn" onclick="runDemo()">Detect Fraud</button>
+
+<pre id="demoOutput">Output will appear here...</pre>
+
+  </div>
+</section>
+
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+
+  document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+}
+
+function runDemo() {
+  const input = document.getElementById("demoInput").value.split(/\s+/);
+  const output = document.getElementById("demoOutput");
+
+  let seen = {};
+  let fraud = [];
+
+  input.forEach(tx => {
+    seen[tx] = (seen[tx] || 0) + 1;
+    if (seen[tx] === 3) fraud.push(tx);
+  });
+
+  output.textContent =
+    fraud.length > 0
+    ? "Suspicious repeated transactions detected:\n" + fraud.join(", ")
+    : "No suspicious patterns found.";
+}
+</script>
+
+</body>
+</html>
